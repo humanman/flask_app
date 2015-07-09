@@ -15,7 +15,9 @@ To install type in bash:
 After this, create a project folder and a venv folder within:
 
 > $ mkdir myproject
+
 > $ cd myproject
+
 > $ virtualenv venv
 
 
@@ -67,7 +69,7 @@ ANI
 
 Another external library Flask is dependent on is Jinja2, a template engine. Jinja2 shares similarities with [Mustache](http://mustache.github.io/). Templates are housed in the templates folder in your application. 
 
-**{{ Includeing Ninja }}**
+**{{ Including Ninja }}**
 
 In your main .py file, make sure to include the render_template() method. To enable this method, all you have to do is give the name of the template in your code and the variables you want to pass to Jinja2 as keyword arguments. 
 
