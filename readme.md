@@ -130,6 +130,7 @@ Example:
 	</html>
 
 **{{ Variables }}**
+
 Template variables are defined by the context dictionary that is passed to the template.You can access attributes of a varaible by using dot (.) or ['attribute']. 
 
 Example: 
@@ -170,7 +171,7 @@ For example, in our show_entries.html file we employ a filter:
 
 {{ entry.text|safe }} says the text of the entry is safe from automatic escaping. A list of builtins is available [here](http://jinja.pocoo.org/docs/dev/templates/#builtin-filters).
 
-** {{ Template Inheritance }} **
+**{{ Template Inheritance }}**
 
 The best part about using Jinja2 is the ability to use template inheritance. 
 
