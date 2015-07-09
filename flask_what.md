@@ -1,7 +1,7 @@
 #So What is Flask?
 
 
-![flask]('http://media.giphy.com/media/5yLgoc6sGi6NqT9uNDa/giphy.gif')
+![flask](http://media.giphy.com/media/5yLgoc6sGi6NqT9uNDa/giphy.gif)
 
 Ruby has Rails. Python has Flask, except Flask is  a bit lightweight compared to Rails.
 
