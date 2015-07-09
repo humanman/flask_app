@@ -1,4 +1,147 @@
-MARK
+##Python and You
+
+The biggest difference between Flask and other frameworks we have used so far is that Flask is written in a completely different language: Python. Although syntactically similar to Ruby, there are a few key differences between the languages. This section will not be a general introduction to Python for someone new, but just a short list of the differences that you need to know coming from Ruby.
+
+####Data Types
+
+Ruby and Python share many of the same data types; however they often have different names. Here's a quick breakdown of Ruby -> Python naming conventions.
+
+-	`Arrays` in Ruby are called `Lists` in Python.
+-	`Hashes` in Ruby are called `Dictionaries`, or `Dicts` in Python.
+-	`Booleans` in Ruby are 'true' and 'false', in Python they are capitalized as 'True' and 'False'. Also, empty strings, lists, dicts, etc are truthy in Python, unlike Ruby.
+-	`Null` in Ruby is `None` in Python
+
+####Functions and Loops
+-	`Function` definitions and `Loops` are ended in Python slightly differently than in Ruby. In Ruby you use the keyword `end`. But in Python the function is ended based on the indentation. This means you need to be very careful when typing. For Example:
+
+		//Python Functions
+		def get(x):
+			return x
+
+		def output(y):
+			if y == True:
+				return y
+
+-	`For Loops` in Python are also slightly different, using the syntax `for [variable] in [object]:`. 
+
+		//Python For Loop
+		numbers = [1, 2, 3, 4]
+
+		for x in numbers:
+			print x
+		
+		//Output
+		1
+		2
+		3
+		4
+
+	You can also iterate through strings and dicts with the same syntax
+
+		//More For Loop
+		dict = {a:1, b:2, c:3}
+
+		for x in dict:
+			print x
+
+		string = "Hello"
+
+		for x in string:
+			print x
+
+		//Output
+		1
+		2
+		3
+		H
+		e
+		l
+		l
+		o
+
+The last thing that we need to go over for Flask are `Decorators`. This one is a little more complicated, so let's take it slowly.
+
+- `Decorators` are, simply put, functions that take a different function as their argument, and return a new function. Let's look at a basic example.
+
+		//A wrapper function that adds 1 to what a different function returns
+		def wrapper(different_func):
+			def new_func():
+				print('I am running the function')
+				output_variable = different_func()
+				return output_variable + 1
+			return new_func
+
+		def number1_func():
+			return 1
+
+		decorated_func = wrapper(number1_func)
+
+		decorated_func()
+
+		//Output
+		I am running the function
+		2
+
+- That code can get messy however, and you end up having to rename functions after decorating them. So Python has a syntax for automatically applying `Decorators` to functions using `@`.
+
+		//Continuing from the code above
+		@wrapper
+		def number2_func():
+			return 2
+
+		number2_func()
+
+		//Output
+		I am running the function
+		3
+
+- This is the syntax that is used in Flask for route handlers.
+
+
+#So What is Flask?
+
+
+![flask](http://media.giphy.com/media/5yLgoc6sGi6NqT9uNDa/giphy.gif)
+
+Ruby has Rails. Python has Flask, except Flask is  a bit lightweight compared to Rails.
+
+Flask manages your routing using Werkzeug and templating using Jinja 
+
+The purpose of Flask is to provide a painless and quick way to get a simple app up and running on the web. 
+
+
+
+###Werk-what?
+	
+Just think of Rack, but with a german sausage sounding name.
+
+```
+from werkzeug.wrappers import Request, Response
+
+@Request.application
+def application(request):
+    return Response('Hello World!')
+
+if __name__ == '__main__':
+    from werkzeug.serving import run_simple
+    run_simple('localhost', 4000, application)
+ ```
+
+
+###Jinj-huh?
+
+Remember squids, flounders, and mustaches?  Then this will look familiar:
+
+```
+{% extends "layout.html" %}
+{% block body %}
+  <ul>
+  {% for user in users %}
+    <li><a href="{{ user.url }}">{{ user.username }}</a></li>
+  {% endfor %}
+  </ul>
+{% endblock %}
+```
 
 # Installation
 
@@ -11,6 +154,7 @@ Virtualenv is probably what you want to use during development. The more project
 To install type in bash:
 
 > sudo pip install virtualenv
+(Pip stands for Python Install Package)
 
 After this, create a project folder and a venv folder within:
 
@@ -20,6 +164,7 @@ After this, create a project folder and a venv folder within:
 
 > $ virtualenv venv
 
+This will creates a folder which contains all the necessary executables to use the packages that a Python project would need, and a copy of the pip library which you can use to install other packages.
 
 Whenever you want to work on a project
 > $ . venv/bin/activate
@@ -27,21 +172,22 @@ Whenever you want to work on a project
 Now you can just enter the following command to get Flask:
 > pip install Flask
 
-(Pip stands for Python Install Package)
-
-This will creates a folder which contains all the necessary executables to use the packages that a Python project would need, and a copy of the pip library which you can use to install other packages.
 
 At this point to just get a basic helloworld app up and running you just need to create a python file, like hello.py and in that app include:
 
-> from flask import Flask
-> app = Flask(__name__)
+	from flask import Flask
+	app = Flask(__name__)
 
-> @app.route('/')
-> def hello_world():
->     return 'Hello World!'
-> 
-> if __name__ == '__main__':
->     app.run()
+	@app.route('/')
+
+	def hello_world():
+
+		return 'Hello World!'
+
+	if __name__ == '__main__':
+
+	 app.run()
+
 
 Once this is saved you can go to bash to start the server by running:
 
@@ -53,12 +199,6 @@ Then go to the site http://127.0.0.1:5000/ and if all worked well you should be 
 To place in debugging you can either run: app.run(debug=True) 
 or app.debug = True
 
-
-To access database type sqlite3 /tmp/flaskr.db < schema.sql
-
-
-
-ANI
 
 
 #{{ Become a Jinja Ninja }}
@@ -243,121 +383,3 @@ NOTE: You can't define multiple {% block %} tags with the same name in the same 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-BEN
-
-
-
-GORDON
-##Python and You
-
-The biggest difference between Flask and other frameworks we have used so far is that Flask is written in a completely different language: Python. Although syntactically similar to Ruby, there are a few key differences between the languages. This section will not be a general introduction to Python for someone new, but just a short list of the differences that you need to know coming from Ruby.
-
-####Data Types
-
-Ruby and Python share many of the same data types; however they often have different names. Here's a quick breakdown of Ruby -> Python naming conventions.
-
--	`Arrays` in Ruby are called `Lists` in Python.
--	`Hashes` in Ruby are called `Dictionaries`, or `Dicts` in Python.
--	`Booleans` in Ruby are 'true' and 'false', in Python they are capitalized as 'True' and 'False'. Also, empty strings, lists, dicts, etc are truthy in Python, unlike Ruby.
--	`Null` in Ruby is `None` in Python
-
-####Functions and Loops
--	`Function` definitions and `Loops` are ended in Python slightly differently than in Ruby. In Ruby you use the keyword `end`. But in Python the function is ended based on the indentation. This means you need to be very careful when typing. For Example:
-
-		//Python Functions
-		def get(x):
-			return x
-
-		def output(y):
-			if y == True:
-				return y
-
--	`For Loops` in Python are also slightly different, using the syntax `for [variable] in [object]:`. 
-
-		//Python For Loop
-		numbers = [1, 2, 3, 4]
-
-		for x in numbers:
-			print x
-		
-		//Output
-		1
-		2
-		3
-		4
-
-	You can also iterate through strings and dicts with the same syntax
-
-		//More For Loop
-		dict = {a:1, b:2, c:3}
-
-		for x in dict:
-			print x
-
-		string = "Hello"
-
-		for x in string:
-			print x
-
-		//Output
-		1
-		2
-		3
-		H
-		e
-		l
-		l
-		o
-
-The last thing that we need to go over for Flask are `Decorators`. This one is a little more complicated, so let's take it slowly.
-
-- `Decorators` are, simply put, functions that take a different function as their argument, and return a new function. Let's look at a basic example.
-
-		//A wrapper function that adds 1 to what a different function returns
-		def wrapper(different_func):
-			def new_func():
-				print('I am running the function')
-				output_variable = different_func()
-				return output_variable + 1
-			return new_func
-
-		def number1_func():
-			return 1
-
-		decorated_func = wrapper(number1_func)
-
-		decorated_func()
-
-		//Output
-		I am running the function
-		2
-
-- That code can get messy however, and you end up having to rename functions after decorating them. So Python has a syntax for automatically applying `Decorators` to functions using `@`.
-
-		//Continuing from the code above
-		@wrapper
-		def number2_func():
-			return 2
-
-		number2_func()
-
-		//Output
-		I am running the function
-		3
-
-- This is the syntax that is used in Flask for route handlers.
