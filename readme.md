@@ -273,7 +273,7 @@ Ruby and Python share many of the same data types; however they often have diffe
 
 -	`Arrays` in Ruby are called `Lists` in Python.
 -	`Hashes` in Ruby are called `Dictionaries`, or `Dicts` in Python.
--	`Booleans` in Ruby are 'true' and 'false', in Python they are capitalized as 'True' and 'False'. Also, empty strings, lists, dicts, etc are truthy in Python, unlike Ruby.
+-	`Booleans` in Ruby are 'true' and 'false', in Python they are capitalized as 'True' and 'False'. Also, empty strings, lists, dicts, etc are falsy in Python, unlike Ruby.
 -	`Null` in Ruby is `None` in Python
 
 ####Functions and Loops
