@@ -109,7 +109,7 @@ Flask manages your routing using Werkzeug and templating using Jinja
 
 The purpose of Flask is to provide a painless and quick way to get a simple app up and running on the web. 
 
-
+Flask is written and maintained by Armin Ronacher and various contributors.
 
 ###Werk-what?
 	
