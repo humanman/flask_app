@@ -317,7 +317,7 @@ For example, in our show_entries.html file we employ a filter:
 
 The best part about using Jinja2 is the ability to use template inheritance. 
 
-Template inheritance enables you to build a base template that contains all the common elemts of your site and defines blocks that child templates can override. Child blocks are defined by {% block -- %} {% endblock %} 
+Template inheritance enables you to build a base template that contains all the common elements of your site and defines blocks that child templates can override. Child blocks are defined by {% block -- %} {% endblock %} 
 
 
 It's like using yields and partials in Rails. 
